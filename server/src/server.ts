@@ -1,9 +1,12 @@
 import fastify from 'fastify'
+import { prisma } from './libs/prisma'
 
 const app = fastify()
 
-app.get('/', () => {
-	return 'Hello World'
+app.get('/', async () => {
+	const user = await prisma.user.findMany()
+
+	return { user }
 })
 
 app
