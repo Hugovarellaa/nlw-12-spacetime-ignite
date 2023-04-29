@@ -3,5 +3,5 @@ export default function Home() {
     <div>
       <h1>First render</h1>
     </div>
-  );
+  )
 }
