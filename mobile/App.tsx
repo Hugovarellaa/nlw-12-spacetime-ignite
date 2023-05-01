@@ -1,4 +1,4 @@
-import { StatusBar, Text, View } from "react-native";
+import { StatusBar, Text, View } from 'react-native'
 
 export default function App() {
   return (
@@ -13,5 +13,5 @@ export default function App() {
         Open up App.js to start working on your app!
       </Text>
     </View>
-  );
+  )
 }
