@@ -6,6 +6,10 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      sans: 'var(--font-roboto)',
+      alt: 'var(--font-bai-jamjuree)',
+    },
     colors: {
       gray: {
         50: '#eaeaea',
