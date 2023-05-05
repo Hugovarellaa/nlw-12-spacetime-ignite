@@ -4,9 +4,21 @@ import { prisma } from '../libs/prisma'
 export async function MemoriesRoutes(app: FastifyInstance) {
 	// Get all memories
 	app.get('/', async () => {
-		const memory = await prisma.memory.findMany()
+		const memory = await prisma.memory.findMany({
+			orderBy: {
+				createdAt: 'asc',
+			},
+		})
 
-		return { memory }
+		const memories = memory.map((memory) => {
+			return {
+				id: memory.id,
+				coverUrl: memory.coverUrl,
+				excerpt: memory.content.substring(0, 115).concat('...'),
+			}
+		})
+
+		return { memories }
 	})
 
 	// Get specific memories
