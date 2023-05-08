@@ -60,20 +60,26 @@ export async function MemoriesRoutes(app: FastifyInstance) {
 			},
 		})
 
-		return { memory }
+		return reply.status(201).send(memory)
 	})
 
 	// Update all memories
-	app.put('/:id', async () => {
-		const memory = await prisma.memory.findMany()
-
-		return { memory }
-	})
+	app.put('/:id', async (request, reply) => {})
 
 	// Delete  memories
-	app.delete('/', async () => {
-		const memory = await prisma.memory.findMany()
+	app.delete('/:id', async (request, reply) => {
+		const paramsSchema = z.object({
+			id: z.string().uuid(),
+		})
 
-		return { memory }
+		const { id } = paramsSchema.parse(request.params)
+
+		await prisma.memory.delete({
+			where: {
+				id,
+			},
+		})
+
+		return reply.status(204).send()
 	})
 }
