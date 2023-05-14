@@ -7,6 +7,7 @@ const envSchema = z.object({
 	GITHUB_ID: z.string(),
 	GITHUB_SECRET: z.string(),
 	PORT: z.coerce.number().default(3333),
+	SECRET: z.string(),
 })
 
 const _env = envSchema.safeParse(process.env)
