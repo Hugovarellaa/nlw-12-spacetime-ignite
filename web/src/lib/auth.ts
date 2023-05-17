@@ -30,7 +30,5 @@ export function getUser(): UserInfo {
     avatarUrl: data.user.avatarUrl,
   }
 
-  console.log(userInfo)
-
   return userInfo
 }
