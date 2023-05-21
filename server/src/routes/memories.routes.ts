@@ -9,24 +9,23 @@ export async function MemoriesRoutes(app: FastifyInstance) {
 
 	// Get all memories
 	app.get('/', async (request) => {
-		const memory = await prisma.memory.findMany({
+		const memories = await prisma.memory.findMany({
 			where: {
-				id: request.user.sub,
+				userId: request.user.sub,
 			},
 			orderBy: {
 				createdAt: 'asc',
 			},
 		})
 
-		const memories = memory.map((memory) => {
+		return memories.map((memory) => {
 			return {
 				id: memory.id,
 				coverUrl: memory.coverUrl,
 				excerpt: memory.content.substring(0, 115).concat('...'),
+				createdAt: memory.createdAt,
 			}
 		})
-
-		return { memories }
 	})
 
 	// Get specific memories
