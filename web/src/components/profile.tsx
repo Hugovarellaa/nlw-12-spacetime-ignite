@@ -4,7 +4,7 @@ import Image from 'next/image'
 export function Profile() {
   const { name, avatarUrl } = getUser()
   return (
-    <div className="transi flex items-center gap-3 text-left ">
+    <div className="flex items-center gap-3 text-left">
       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400">
         <Image
           src={avatarUrl}
